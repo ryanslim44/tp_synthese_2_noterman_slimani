@@ -31,3 +31,16 @@ On va utiliser la fonction `socket` pour créer le nouveau socket. Cette fonctio
 Cette fonction renvoie :
 - Un entier qui représente la description du socket; Cet entier nous permettra d'interagir avec le socket.
 - `-1` en cas d’erreur.
+
+## 4. Pour `gettftp` : 
+### a) Construction d’une requête en lecture (RRQ) correctement formée, et envoi au serveur
+
+L’objectif de cette question est de construire une requête TFTP de type `RRQ` qui sera envoyée au serveur pour transformer un fichier en mode lecture.
+
+Pour cela, nous créons la fonction `sendRRQ`. En paramètre de cette fonction, on renseigne le descripteur de socket UDP, un pointeur vers l’adresse du serveur et le nom du fichier que le client souhaite lire.
+
+Le buffer contient la requête `RRQ` à envoyer. Les deux premiers éléments du tableau correspondent à l’OPCODE, pour une requête `RRQ`, il faut avoir `buffer[0] = 0` (c’est toujours le cas) et `buffer[1] = 1` (vaut 1 spécialement pour le `RRQ`). On complète le buffer avec le nom du fichier et le mode de transfert.
+
+Avec un `if`, on envoie la requête et on vérifie qu’il n’y a pas d’erreur.
+
+Cette fonction permet donc au client de demander un fichier à un serveur TFTP en envoyant une requête de type `RRQ`.
