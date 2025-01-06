@@ -14,7 +14,7 @@ Dans cette question, nous voulons utiliser la fonction `getaddrinfo` pour obteni
 
 L’utilisation de `getaddrinfo` se trouve dans le `main`. Dans un premier temps, on initialise tout avec la fonction `memset`.
 
-### Description du code :
+Description du code :
 - Puisque l’on veut uniquement utiliser les adresses en IPv4, il faut écrire la ligne de code suivante : `hints.ai_family = AF_INET`. 
 - On définit le `socktype` comme étant `SOCK_DGRAM`, soit pour une connexion du type UDP.
 - On met le `ai_protocol` à `0` pour que le système prenne le protocole par défaut, soit l’UDP.
@@ -28,6 +28,6 @@ On va utiliser la fonction `socket` pour créer le nouveau socket. Cette fonctio
 - Un paramètre pour le type de socket, on veut un socket de type UDP, donc on prend la variable `ai_socktype` qui est configurée en `SOCK_DGRAM`.
 - Le dernier paramètre correspond au protocole. On configure avec la variable `ai_protocol` qui vaut `0`.
 
-### Cette fonction renvoie :
+Cette fonction renvoie :
 - Un entier qui représente la description du socket; Cet entier nous permettra d'interagir avec le socket.
 - `-1` en cas d’erreur.
