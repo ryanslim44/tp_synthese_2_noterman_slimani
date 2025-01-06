@@ -44,3 +44,23 @@ Le buffer contient la requête `RRQ` à envoyer. Les deux premiers éléments du
 Avec un `if`, on envoie la requête et on vérifie qu’il n’y a pas d’erreur.
 
 Cette fonction permet donc au client de demander un fichier à un serveur TFTP en envoyant une requête de type `RRQ`.
+
+### b) Réception d’un fichier constitué d’un seul paquet de données (DAT) et son acquittement (ACK)
+
+Dans cette question, on veut implémenter la réception d’un fichier via le protocole TFTP. Le client doit recevoir un paquet de données contenant le fichier (`DAT`) puis, une fois le paquet reçu, envoyer un acquittement (`ACK`) pour informer le serveur que les données ont bien été reçues.
+
+### c) Réception d’un fichier constitué de plusieurs paquets de données (DAT) et leurs acquittements respectifs (ACK)
+
+Dans cette question, on veut réaliser la même opération que dans la question précédente, mais cette fois-ci pour un fichier divisé en plusieurs paquets.
+
+1. **Initialisation** :
+   - On initialise les buffers et l’adresse du serveur.
+
+2. **Boucle principale** :
+   - On réceptionne les paquets à l’aide de la fonction `recvfrom`, qui reçoit un paquet et le stocke dans le buffer. Si la réception échoue, une erreur s’affiche.
+   - Ensuite, il faut analyser le paquet reçu :
+     - L’opcode est enregistré dans les deux premiers octets, ce qui permet d’identifier le type de paquet.
+
+3. **Traitement des paquets** :
+   - On identifie l’opcode (qui doit valoir `3` pour les paquets de données).
+   - Les données sont écrites à partir du 4ᵉ élément du tableau.
