@@ -86,4 +86,7 @@ Pour vérifier que l’envoi s'est bien déroulé, on peut afficher le numéro d
 
 Enfin, on ferme le fichier à la fin de l’opération.
 
+![Illustration](texte_com.png)
+
+
 
