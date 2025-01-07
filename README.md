@@ -64,3 +64,26 @@ Dans cette question, on veut réaliser la même opération que dans la question 
 3. **Traitement des paquets** :
    - On identifie l’opcode (qui doit valoir `3` pour les paquets de données).
    - Les données sont écrites à partir du 4ᵉ élément du tableau.
+
+## 5) Pour `puttftp` :  
+
+### a) Construction d’une requête en écriture (WRQ) correctement formée, et envoi au serveur
+
+On veut créer et envoyer une requête `WRQ` au serveur pour démarrer un transfert de fichier du client vers le serveur.
+
+On commence donc par faire une requête d’écriture de paquet au serveur.
+
+Cela fonctionne de la même manière que la question précédente, sauf que pour la requête `WRQ` l’opcode vaut `2` (donc `buffer[1] = 2`).
+
+### b) Envoi d’un fichier constitué de plusieurs paquets de données (DAT) et réception de son acquittement (ACK)
+
+On va devoir écrire une fonction pour téléverser des fichiers constitués de plusieurs paquets. 
+
+- On utilise la fonction `fopen` pour ouvrir le fichier.
+- On va coder une boucle pour transférer ces différents paquets. Pour cela, nous devons lire les données avec la fonction `fread` qui peut lire jusqu’à 512 octets du fichier. Ces données se trouvent dans le buffer à partir du quatrième élément. On envoie chaque paquet avec `sendto()`.
+
+Pour vérifier que l’envoi s'est bien déroulé, on peut afficher le numéro du bloc et la taille des données envoyées. Comme à la question 4, on envoie un acquittement du serveur au client via la fonction `recvfrom()`.
+
+Enfin, on ferme le fichier à la fin de l’opération.
+
+
