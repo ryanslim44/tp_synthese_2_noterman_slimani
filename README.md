@@ -86,7 +86,13 @@ Pour vérifier que l’envoi s'est bien déroulé, on peut afficher le numéro d
 
 Enfin, on ferme le fichier à la fin de l’opération.
 
+Resultat sur la commande lorsqu'on televerse un fichier texte (il contient un seul paquet) : 
 ![Illustration](texte_com.png)
 
+Resultat sur la commande lorsqu'on televerse une image (elle contient plusieurs paquets): 
+![Illustration](image_com.png)
 
+L’image est beaucoup plus lourde mais elle apparaît bien ci-dessous dans le répertoire du serveur.
+
+![Illustration](dossier_com.png)
 
